@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $ser="localhost";
 $user = "root";
@@ -58,7 +59,49 @@ function insert()
 }
 
 
+function login()
+{
+    $ser="localhost";
+    $user = "root";
+    $pass = "";
+    $db="first_db";
 
+    $conn = new mysqli($ser,$user, $pass, $db);
+
+    $fn=$_POST["fname"];
+
+    $em=$_POST["email"];
+    $pwd=$_POST["pwd"];
+
+    $sel="select * from user where email='$em' and password='$pwd' ";
+    $ex=$conn->query($sel);
+
+    $fet=$ex->fetch_array();
+
+    $no=$ex->num_rows;
+
+    if($no==1)
+    {
+        $_SESSION["uid"] = $fet["uid"];
+        $_SESSION["em"]= $fet["email"];
+        $_SESSION["fn"]= $fet["fname"];
+
+        echo "<script>
+        alert ('Logged in Successfully')
+        window.location='profile.php';
+        </script>";
+
+    }
+    else
+    {
+        echo "<script>
+         alert ('Invalid Email or Password')
+        window.location='index.php';
+        </script>";
+    }
+
+
+}
 
 
 

@@ -1,3 +1,25 @@
+<?php   
+if(isset($_POST["Submit"]))
+{
+    login();
+}
+
+
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Log In modal -->
 <div class="modal" id="login" role="dialog">
     <div class="modal-dialog" role="document">
@@ -20,12 +42,12 @@
                     <label style="display: none;"> First Name </label>
                     <input type="text" class="form-control" name="fname" style="display: none;" >
                     
-                    
+                <button type="submit" class="btn btn-primary" name="Submit"> login</button>    
                 </form>
             </div>
             <div class="modal-footer">
                 <a class="d-block" href="#"> Forget Password </a>
-                <button type="button" class="btn btn-primary" name="Submit"> login</button>
+                
                 
             </div>
         
